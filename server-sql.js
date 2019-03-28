@@ -10,7 +10,9 @@ sqlite.open('db.sqlite').then(db => {
 
     res.send(
       await db.all(
-        `SELECT username, confidential_info FROM User WHERE username = '${username}' AND password = '${password}'`
+        `SELECT username, confidential_info FROM User WHERE username = ? AND password = ?`,
+        username,
+        password
       )
     );
   });
